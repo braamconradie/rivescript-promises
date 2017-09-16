@@ -486,9 +486,8 @@ class Parser
       # Look for obvious errors first.
       if @utf8
         # In UTF-8 mode, most symbols are allowed.
-        if line.match(/[A-Z\\.]/)
-          return "Triggers can't contain uppercase letters, backslashes or
-                  dots in UTF-8 mode"
+        if line.match(/[\\.]/)
+          return "Triggers can't contain backslashes or dots in UTF-8 mode"
       else if line.match(/[^a-z0-9(|)\[\]*_#@{}<>=\s]/)
         return "Triggers may only contain lowercase letters, numbers, and
                 these symbols: ( | ) [ ] * _ # { } < > ="
